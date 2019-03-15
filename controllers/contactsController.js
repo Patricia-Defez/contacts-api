@@ -8,7 +8,7 @@ module.exports.list = (req, res, next) => {
         .catch(next);
 }
 
-module.exports.get = (req, res, next) => {
+module.exports.getOne = (req, res, next) => {
     Contact.findById(req.params.id)
         .then(contact => {
             if(!contact){
@@ -28,7 +28,7 @@ module.exports.create = (req, res, next) => {
         .catch(next)
 }
 
-module.exports.delete = (req, res, next) => {
+module.exports.deleteOne = (req, res, next) => {
     Contact.finByIdAndDelete(req.params.id)
         .then(contact => {
             if(!contact){
