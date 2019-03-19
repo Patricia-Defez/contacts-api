@@ -22,10 +22,14 @@ module.exports.getOne = (req, res, next) => {
 
 module.exports.create = (req, res, next) => {
     const contact = new Contact(req.body);
-
+    
+    console.log(req.file)
+    if (req.file) {
+        contact.avatarURL = req.file.secure_url;
+    }
     contact.save()
         .then(contact => res.status(201).json(contact))
-        .catch(next)
+        .catch(next);
 }
 
 module.exports.deleteOne = (req, res, next) => {
